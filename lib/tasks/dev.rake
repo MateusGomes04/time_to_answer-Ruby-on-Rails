@@ -15,6 +15,8 @@ namespace :dev do
 
     show_spinner("Registering the Default Administrator...") {%x(rails dev:add_default_admin)}
 
+    show_spinner("Cadastrando administradores extras") {%x(rails dev:add_extra_admins)}
+
     show_spinner("Registering the Default User...") {%x(rails dev:add_default_user)}
 
 
@@ -31,6 +33,18 @@ namespace :dev do
       password_confirmation: default_password
     )
   end
+
+  desc "Adiciona o administrador padrão"
+  task add_extra_admins: :environment do
+    10.times do |i|
+    Admin.create!(
+      email: Faker::Internet.email,
+      password: default_password,
+      password_confirmation: default_password
+    )
+  end
+
+  
 
   desc "Adiciona o usuário padrão"
   task add_default_user: :environment do
