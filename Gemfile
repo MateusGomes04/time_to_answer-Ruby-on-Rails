@@ -56,6 +56,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'awesome_print'
+
+  gem 'kaminari'
+  gem 'kaminari-i18n'
 end
 
 group :test do
