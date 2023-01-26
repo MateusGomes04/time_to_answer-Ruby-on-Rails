@@ -23,6 +23,9 @@ namespace :dev do
     show_spinner("Registering standard subjects...") {%x(rails
     dev:add_subjects) }
 
+    show_spinner("Registering questions and answers...") {%x(rails
+    dev:add_answer_and_questions) }
+
 
     else
       puts "You are not in the development envrioment to run this!!"
@@ -67,6 +70,17 @@ end
   end
 end
 
+desc "adiciona perguntas e respostas"
+task add_answer_and_question: :environment do
+  Subject.all.each do |subject|
+    rand(5..10).times do |i|
+    Question.create!(
+      description: "#(Faker::Lorem.paragraph) #{Faker::Lorem.questions}",
+      subject: subject
+    )
+    end
+  end
+end
   private
     def show_spinner(msg_start)
       spinner = TTY::Spinner.new("[:spinner] #{msg_start}")
