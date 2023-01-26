@@ -1,6 +1,6 @@
 namespace :dev do
 
-  default_password = 123456
+  DEFAULT_PASSWORD = 123456
   DEFAULT_FILES_PATH = File.join(Rails.root, 'lib', 'tmp')
 
   desc "Configures the development envrioment"
@@ -20,7 +20,7 @@ namespace :dev do
 
     show_spinner("Registering the Default User...") {%x(rails dev:add_default_user)}
 
-    show_spinner("Registering standard subjects...") { %x(rails
+    show_spinner("Registering standard subjects...") {%x(rails
     dev:add_subjects) }
 
 
@@ -33,8 +33,8 @@ namespace :dev do
   task add_default_admin: :environment do
     Admin.create!(
       email: 'admin@admin.com',
-      password: default_password,
-      password_confirmation: default_password
+      password: DEFAULT_PASSWORD,
+      password_confirmation: DEFAULT_PASSWORD
     )
   end
 
@@ -43,8 +43,8 @@ namespace :dev do
     10.times do |i|
     Admin.create!(
       email: Faker::Internet.email,
-      password: default_password,
-      password_confirmation: default_password
+      password: DEFAULT_PASSWORD,
+      password_confirmation: DEFAULT_PASSWORD
     )
   end
 end
@@ -53,8 +53,8 @@ end
   task add_default_user: :environment do
     User.create!(
        email: 'user@user.com',
-       password: default_password,
-       password_confirmation: default_password
+       password: DEFAULT_PASSWORD,
+       password_confirmation: DEFAULT_PASSWORD
     )
  end
  
