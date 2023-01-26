@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   namespace :admins_backoffice do
     get 'welcome/index'
     resources :admins #administrators
-    resources :subjects
+    resources :subjects # Assuntos/Áreas
+    resources :questions # Perguntas
+    
   end
   
   devise_for :admins
