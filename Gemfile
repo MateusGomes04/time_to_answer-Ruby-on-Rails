@@ -59,6 +59,8 @@ group :development do
 
   gem 'kaminari'
   gem 'kaminari-i18n'
+
+  gem "cocoon"
 end
 
 group :test do

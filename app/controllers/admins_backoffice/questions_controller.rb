@@ -12,8 +12,8 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
 
      def create
      @question = Question.new(params_question)
-     if @question.save
 
+     if @question.save
      redirect_to admins_backoffice_question_path, notice: "Questão cadastrada com sucesso!"
      else
 
@@ -52,7 +52,8 @@ class AdminsBackoffice::QuestionsController < AdminsBackofficeController
      private
 
      def params_question
-     params.require(:question).permit(:description, :subject_id)
+      params.require(:question).permit(:description, :subject_id,
+      answers_attributes: [:id, :description, :correct, :_destroy])
      end
      def set_question
      @question = Question.find(params[:id])
