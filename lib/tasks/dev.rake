@@ -23,8 +23,7 @@ namespace :dev do
     show_spinner("Registering standard subjects...") {%x(rails dev:add_subjects) }
 
     show_spinner("Registering questions and answers...") {%x(rails dev:add_answers_and_questions) }
-
-
+    
     else
       puts "You are not in the development envrioment to run this!!"
     end
@@ -83,6 +82,17 @@ desc "Adiciona perguntas e respostas"
       end
     end
   end
+
+  desc "Reseta o contador dos assuntos"
+  task reset_subject_counter: :environment do
+    show_spinner("Resetting the subject counter...") do
+      Subject.find_each do |subject|
+        Subject.reset_counters(subject.id, :questions)
+      end
+    end
+  end
+
+
 
   private
 
