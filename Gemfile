@@ -61,6 +61,8 @@ group :development do
   gem 'kaminari-i18n'
 
   gem "cocoon"
+
+  gem "prawn-rails"
 end
 
 group :test do
